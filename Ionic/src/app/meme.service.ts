@@ -18,5 +18,34 @@ export class MemeService {
 	public getMeme(id):Observable<any> {
 			return this.http.get(
 					this.backendURL + 'meme/' + id);
-	}
+  }
+  
+  public createMeme(meme):Observable<any> {
+    return this.http.post(
+      this.backendURL + 'meme', {
+        nome: meme.nome,
+        nivel: meme.nivel,
+        descricao: meme.descricao,
+        imagem: meme.imagem
+
+      });
+  }
+
+  public updateMeme(meme, id):Observable<any> {
+    return this.http.put(
+      this.backendURL + 'meme/' + id, {
+        nome: meme.nome,
+        nivel: meme.nivel,
+        descricao: meme.descricao,
+        imagem: meme.imagem
+
+      });
+  }
+
+  public deleteMeme(id):Observable<any> {
+    return this.http.delete(
+        this.backendURL + 'meme/' + id);
+}
+
+ 
 }

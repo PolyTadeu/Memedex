@@ -12,13 +12,33 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-card *ngIf="meme">
-    <ion-card-header>{{meme[0].nome}}</ion-card-header>
-    <ion-card-subtitle>{{meme[0].descricao}}</ion-card-subtitle>
-    <ion-card-content>
-      <ion-img src={{meme[0].imagem}}></ion-img>
-      <ion-progress-bar value="{{meme[0].nivel/10}}"></ion-progress-bar>
-    </ion-card-content>
+  <ion-card >
+   <form form="ngModel" (ngSubmit)="onSubmit()">
+     <ion-select name="metodo" [(ngModel)]="form.metodo">
+      <ion-select-option value="post">POST</ion-select-option>
+      <ion-select-option value="put">PUT</ion-select-option>
+      <ion-select-option value="delete">DELETE</ion-select-option>
+    </ion-select>
+    <ion-item>
+      <ion-item>
+        <ion-label>Nome</ion-label>
+        <ion-input name='nome' [(ngModel)]="meme.nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descrição</ion-label>
+        <ion-input name='descricao' [(ngModel)]="meme.descricao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nível</ion-label>
+        <ion-input name='nivel' [(ngModel)]="meme.nivel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Imagem</ion-label>
+        <ion-input name='imagem' [(ngModel)]="meme.imagem"></ion-input>
+      </ion-item>
+    </ion-item>
+    <ion-button type='submit'>Submit</ion-button>
+   </form>
   </ion-card>
   <ion-button href="tabs/tab2">Voltar</ion-button>
 </ion-content>
